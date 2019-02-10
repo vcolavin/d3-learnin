@@ -8,7 +8,7 @@ import * as d3 from 'd3';
 const svg = d3.select('svg').style('background-color', 'black');
 const width = parseInt(svg.attr('width'));
 const height = parseInt(svg.attr('height'));
-const n = 200;
+const n = 20;
 const circles = svg
 	.selectAll('circle')
 	.data(d3.range(n))
@@ -21,10 +21,11 @@ d3.timer(time => {
 	circles
 		.attr(
 			'cy',
-			d => (Math.sin(d / 20 + time / 1000) * height) / 4 + height / 2
+			d =>
+				(Math.sin((d / 20 + time / 1000) * 2) * height) / 4 + height / 2
 		)
 		.attr(
 			'cx',
-			d => (Math.cos(d / 20 + (time * 2) / 1000) * width) / 4 + width / 2
+			d => (Math.cos(d / 20 + time / 1000) * width) / 4 + width / 2
 		);
 });
